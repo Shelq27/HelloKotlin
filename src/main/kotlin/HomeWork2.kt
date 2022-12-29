@@ -16,7 +16,7 @@ fun main() {
     val amountTransfer = scr.nextDouble()
     val amountPreviousTransfer = 76000
 
-    println(calcultion(cardType, amountPreviousTransfer, amountTransfer))
+    println(calculation(cardType, amountPreviousTransfer, amountTransfer))
 }
 
 
@@ -62,18 +62,20 @@ fun endInWord(wasOnline: Int): String {
     return "$time " + endWord[0]
 }
 
-fun calcultion(cardType: String = "VKPay", amountPreviousTransfer: Int = 0, amountTransfer: Double): String {
-    when {
-        cardType == "Mastercard" || cardType == "Maestro" -> {
+fun calculation(cardType: String = "VKPay", amountPreviousTransfer: Int = 0, amountTransfer: Double): String {
+    return when (cardType) {
+        "Mastercard", "Maestro" -> {
             if (amountPreviousTransfer > 75000) {
-                return "Сумма вашего перевода равна : " + ((amountTransfer *0.994 ) - 20) + " руб."
-            } else return "Сумма вашего перевода равна : $amountTransfer руб."
+                "Сумма вашего перевода равна : " + ((amountTransfer *0.994 ) - 20) + " руб."
+            } else "Сумма вашего перевода равна : $amountTransfer руб."
         }
-        cardType == "Visa" || cardType == "Мир" -> {
+        "Visa", "Мир" -> {
             if (amountTransfer < 35) {
-                return "Минимальная сумма с картой Visa|Мир 35 руб."
-            } else {return "Сумма вашего перевода равна : " + (amountTransfer * 0.9925) + " руб."}
+                "Минимальная сумма с картой Visa|Мир 35 руб."
+            } else {
+                "Сумма вашего перевода равна : " + (amountTransfer * 0.9925) + " руб."
+            }
         }
-        else -> return "Сумма вашего перевода равна : $amountTransfer руб."
+        else -> "Сумма вашего перевода равна : $amountTransfer руб."
     }
 }
