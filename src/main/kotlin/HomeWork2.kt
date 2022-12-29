@@ -4,9 +4,9 @@ fun main() {
     val scr = Scanner(System.`in`)
 
     // ДЗ_1
-    println("Введите секунды")
-    val time = scr.nextInt();
-    println(agoToText(time))
+//    println("Введите секунды")
+//    val time = scr.nextInt();
+//    println(agoToText(time))
 
     //ДЗ_2
 
@@ -14,7 +14,7 @@ fun main() {
     val cardType = scr.next()
     println("Введите сумму перевода ")
     val amountTransfer = scr.nextDouble()
-    val amountPreviousTransfer = 76000
+    val amountPreviousTransfer = 7600
 
     println(calculation(cardType, amountPreviousTransfer, amountTransfer))
 }
@@ -63,12 +63,16 @@ fun endInWord(wasOnline: Int): String {
 }
 
 fun calculation(cardType: String = "VKPay", amountPreviousTransfer: Int = 0, amountTransfer: Double): String {
+    if ((cardType != "VKPay" && amountTransfer > 150_000)||amountPreviousTransfer>600_000) {
+        return "Превышен лимит на перевод"
+    } else if ((cardType == "VKPay" && amountTransfer > 15000)||(cardType=="VKPay")&&amountPreviousTransfer>40_000) {return "Превышен лимит на перевод"}
     return when (cardType) {
         "Mastercard", "Maestro" -> {
-            if (amountPreviousTransfer > 75000) {
-                "Сумма вашего перевода равна : " + ((amountTransfer *0.994 ) - 20) + " руб."
+            if (amountTransfer > 75_000) {
+                "Сумма вашего перевода равна : " + ((amountTransfer * 0.994) - 20) + " руб."
             } else "Сумма вашего перевода равна : $amountTransfer руб."
         }
+
         "Visa", "Мир" -> {
             if (amountTransfer < 35) {
                 "Минимальная сумма с картой Visa|Мир 35 руб."
