@@ -4,9 +4,9 @@ fun main() {
     val scr = Scanner(System.`in`)
 
     // ДЗ_1
-//    println("Введите секунды")
-//    val time = scr.nextInt();
-//    println(agoToText(time))
+    println("Введите секунды")
+    val time = scr.nextInt();
+    println(agoToText(time))
 
     //ДЗ_2
 
