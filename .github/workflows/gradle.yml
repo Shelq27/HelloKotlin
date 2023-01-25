@@ -7,7 +7,7 @@ on:
     branches: '*'
 
 jobs:
-  build:
+  buld:
 
     runs-on: ubuntu-latest
 
