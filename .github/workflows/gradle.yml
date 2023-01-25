@@ -7,7 +7,7 @@ on:
     branches: '*'
 
 jobs:
-  buld:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -20,4 +20,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlesaw build --info
+      run: ./gradlew build --info
